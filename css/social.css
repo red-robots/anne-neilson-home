@@ -1,0 +1,123 @@
+/* Social CSS */
+.socialone{width: 40px;}
+.socialtwo{width: 80px;}
+.socialthree{width: 120px;}
+.socialfour{width: 160px;}
+.socialfive{width: 200px;}
+.socialsix{width: 240px;}
+
+.social.banner-text {
+    font-size: 14pt;
+    margin: 20px 0 10px 0;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}
+#social{text-align: center;}
+#sociallinks {
+	width: auto;
+	display: inline-block;
+	margin: 0px auto 0px auto;	
+}
+#sociallinks  ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+	z-index: 2;	
+	position: relative;
+}
+#sociallinks ul a,
+#share ul a
+{
+	text-decoration: none;
+	background-image: url(../images/social.png);
+	background-repeat: no-repeat;
+	background-size: 226px 120px;
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	text-indent: -9000px;
+	position: relative;
+	opacity: .8;
+}
+#sociallinks  ul li,
+#share  ul li 
+{
+	float: left;
+	position: relative;
+	margin: 0px 5px;
+	list-style:none;
+}
+#sociallinks  ul a:hover,
+#sociallinks  ul a:hover
+{
+	opacity:1;
+}
+
+/* Footer Icons */
+#sociallinks  .facebook a {
+	background-position: -0px -0px;
+	transition: opacity 0.3s ease;
+}	
+#sociallinks .facebook a:hover {
+	background-position: -0px -30px;
+}
+#sociallinks  .twitter a {
+	background-position: -30px -0px;
+	transition: opacity 0.3s ease;
+}
+#sociallinks .twitter a:hover {
+	background-position: -30px -30px;
+}
+#sociallinks  .pintrest a {
+	background-position: -60px -0px;
+	transition: opacity 0.3s ease;
+}
+#sociallinks  .pintrest a:hover {
+	background-position: -60px -30px;
+}
+#sociallinks  .instagram a {
+	background-position: -90px -0px;
+	transition: opacity 0.3s ease;
+}
+#sociallinks .instagram a:hover {
+	background-position: -90px -30px;
+}
+#sociallinks  .houzz a {
+	background-position: -120px -0px;
+	transition: opacity 0.3s ease;
+}
+#sociallinks .houzz a:hover {
+	background-position: -120px -30px;
+}
+
+
+/* Single View Share Icons */
+#share  .facebook a {
+	background-position: -0px -60px;
+	transition: opacity 0.3s ease;
+}	
+#share .facebook a:hover {
+	background-position: -0px -90px;
+}
+#share  .twitter a {
+	background-position: -30px -60px;
+	transition: opacity 0.3s ease;
+}
+#share .twitter a:hover {
+	background-position: -30px -90px;
+}
+#share  .pintrest a {
+	background-position: -60px -60px;
+	transition: opacity 0.3s ease;
+}
+#share  .pintrest a:hover {
+	background-position: -60px -90px;
+}
+
+@media screen and (min-width: 600px) {
+    #sociallinks {
+        margin: 0px auto 50px auto;	
+    }
+}
