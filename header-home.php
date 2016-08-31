@@ -127,12 +127,60 @@
         <div class="head-right">
             <div id="socialheader">
                 <ul>
-                    <li class="cart"><a href="<?php bloginfo('url'); ?>/cart">Cart</a></li>
+                    <li class="cart">Cart</li>
                 </ul>
             </div><!-- social header -->
             <div id="sb-search" class="sb-search">
                     <?php get_search_form(); ?>
             </div><!-- search -->
+            <div class="popup-cart">
+                <?php do_action( 'woocommerce_before_cart_contents' ); ?>
+                    <?php
+                    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+                        $_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+                        $product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+
+                        if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key ) ) { ?>
+                            <div class="product-box">
+                                <div class="product-thumbnail">
+                                    <?php	$thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+
+                                        if ( ! $_product->is_visible() ) {
+                                            echo $thumbnail;
+                                        } else {
+                                            printf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink( $cart_item ) ), $thumbnail );
+                                        }
+                                    ?>
+                                </div><!--.product-thumbnail-->
+                                <div class="product-info">
+                                    <div class="product-name">
+                                        <?php
+                                            if ( ! $_product->is_visible() ) {
+                                                echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key ) . '&nbsp;';
+                                            } else {
+                                                echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s </a>', esc_url( $_product->get_permalink( $cart_item ) ), $_product->get_title() ), $cart_item, $cart_item_key );
+                                            } ?>
+                                    </div><!--.product-name-->
+                                    <div class="product-quantity">
+                                        <?php echo "Quantity: ".$cart_item['quantity'];?>
+                                    </div><!--.product-quantity-->
+                                    <div class="product-price">
+                                        <?php
+                                            echo "Price: ".apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
+                                        ?>
+                                    </div><!--.product-price-->
+                                </div><!--.product-info-->
+                            </div><!--.product-box-->
+                            <?php
+                        }
+                    }
+
+                    do_action( 'woocommerce_cart_contents' );
+                    ?>
+                <?php do_action( 'woocommerce_after_cart_contents' ); ?>
+                <div class="subtotal">Subtotal - <?php echo WC()->cart->get_cart_total(); ?></div><!--.subtotal-->
+                <div class="checkout button">Checkout<a class="surrounding" href="<?php bloginfo('url'); ?>/cart"></a></div><!--.checkout .button-->
+            </div><!--.popup-cart-->
         </div><!-- head right -->
         
         

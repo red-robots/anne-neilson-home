@@ -182,13 +182,15 @@ html[xmlns] .slides {
 
 .flexslider .flex-direction-nav a.flex-prev {
    /* content: '\f002';*/
-   background-position: -0px 0px;
+   background-position: -5px 0px;
+	background-color: #96A7A6;
    text-indent: -9000px;
    width: 30px !important;
 }
 .flexslider .flex-direction-nav a.flex-next {
    /* content: '\f002';*/
-   background-position: -40px 0px;
+   background-position: -45px 0px;
+	background-color: #96A7A6;
    text-indent: -9000px;
    width: 30px !important;
 }

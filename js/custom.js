@@ -8,6 +8,10 @@
 jQuery(document).ready(function ($) {
 
   $('.blocks').matchHeight();
+  
+    $('#socialheader ul li.cart').on('click',function() {
+        $('.popup-cart').toggle();
+    });
 
 if($("#homepage-flag").length > 0) {	
  if (document.cookie.indexOf('visited=true') == -1) {
