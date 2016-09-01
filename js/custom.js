@@ -12,6 +12,19 @@ jQuery(document).ready(function ($) {
     $('#socialheader ul li.cart').on('click',function() {
         $('.popup-cart').toggle();
     });
+    $('.archive .product img').not('.popup-view img').on('click',function(e) {
+        e.preventDefault();
+        $(this).parents('.product').eq(0).find('.popup-view').toggle();
+    });
+    $('.archive .product .popup-view').on('click',function(){
+        $(this).toggle();
+    });
+    $('.archive .product .popup-view .popup-product .close').on('click',function(){
+        $(this).parents('.product').eq(0).find('.popup-view').toggle();
+    });
+    $('.archive .product .popup-view .popup-product').on('click',function(e){
+        e.stopPropagation();
+    });
 
 if($("#homepage-flag").length > 0) {	
  if (document.cookie.indexOf('visited=true') == -1) {

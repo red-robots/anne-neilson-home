@@ -35,32 +35,33 @@
 		$slidetitle = get_field('slide_title');
 		$slidetext = get_field('slide_text');
 		$havealink = get_field('slide_link');
-		$internalorex = get_field('internal_or_external_link');
-		$link = get_field('link');
-		$externallink = get_field('external_link');	
-		if($internalorex == 'Internal') {
-			$finallink = $link;
-		} else {
-			$finallink = $externallink;	
-		}
-		// Link
-		$pagelink = get_field('slide_link');
-			
-		?>
+		if($havealink=="Yes"){
+            $internalorex = get_field('internal_or_external_link');
+            $link = get_field('link');
+            $externallink = get_field('external_link');	
+            if($internalorex == 'Internal') {
+                $finallink = $link;
+            } else {
+                $finallink = $externallink;	
+            } 
+        }?>
     	
         
         
   
     	   <li> 
-           <a href="<?php echo $finallink ?>">
-           	<img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>" />
-            <?php if($slidetitle != '') : ?>
-            <div class="slide-box">
-            	<?php if($slidetitle != '') { ?><div class="slide-title"><?php echo $slidetitle; ?></div><?php } ?>
-                <?php if($slidetext != '') { ?><div class="slide-text"><?php echo $slidetext; ?></div><?php } ?>
-            </div><!-- slide box --> 
-            <?php endif; ?>
-           </a>
+            <div class="slide-wrapper">
+                <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>" />
+                <?php if($slidetitle != '') { ?>
+                    <div class="slide-box">
+                        <?php if($slidetitle != '') { ?><div class="slide-title"><?php echo $slidetitle; ?></div><?php } ?>
+                        <?php if($slidetext != '') { ?><div class="slide-text"><?php echo $slidetext; ?></div><?php } ?>
+                    </div><!-- slide box --> 
+                <?php } ?>
+                <?php if($havealink=="Yes"){ ?>
+                    <a class="surrounding" href="<?php echo $finallink; ?>"></a>
+                <?php } ?>
+            </div><!--.slide-wrapper-->
           </li>
        
      

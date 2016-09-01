@@ -271,3 +271,49 @@ function my_sort_booksigning( $vars ) {
 
 	return $vars;
 }
+
+function my_popup_view( ){?>
+    <div class="popup-view">
+        <div class="popup-product">
+            <div class="close">X</div><!--.close-->
+            <div id="product-<?php the_ID(); ?>" class="product">
+                <div class="images">
+                        <?php if(get_field('alternate_featured_image')!="") {
+                            // Get field Name
+                            $image = get_field('alternate_featured_image'); 
+                            $url = $image['url'];
+                            $title = $image['title'];
+                            $alt = $image['alt'];
+                            $caption = $image['caption'];
+                            $size = 'medium';
+                            $thumb = $image['sizes'][ $size ];
+                            $width = $image['sizes'][ $size . '-width' ];
+                            $height = $image['sizes'][ $size . '-height' ];
+                        
+                            echo '<img src="' . $thumb . '" />';
+                            
+                        } elseif ( has_post_thumbnail() ) {
+                                the_post_thumbnail();
+                        }?>
+                    </div><!--.images-->
+                <div class="summary entry-summary">
+                    <?php
+                        /**
+                        * woocommerce_single_product_summary hook
+                        *
+                        * @hooked woocommerce_template_single_title - 5
+                        * @hooked woocommerce_template_single_rating - 10
+                        * @hooked woocommerce_template_single_price - 10
+                        * @hooked woocommerce_template_single_excerpt - 20
+                        * @hooked woocommerce_template_single_add_to_cart - 30
+                        * @hooked woocommerce_template_single_meta - 40
+                        * @hooked woocommerce_template_single_sharing - 50
+                        */
+                        do_action( 'woocommerce_single_product_summary' );
+                    ?>
+                </div><!-- .summary -->
+            </div><!-- #product-<?php the_ID(); ?> -->
+        </div><!--.popup-product-->
+    </div><!--.popup-view-->
+<?php }
+add_action('woocommerce_after_shop_loop_item' , 'my_popup_view');

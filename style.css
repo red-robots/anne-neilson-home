@@ -831,6 +831,9 @@ a:hover {
 
 /* Page structure */
 header#masthead {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 	position: relative;
 	/*text-align: right;*/
 }
@@ -843,13 +846,14 @@ header#masthead {
 }
 .popup-cart {
     position: absolute;
-    top: 100%;
+    top: 110%;
     left: 0;
     width: 100%;
     z-index: 20;
     background-color: white;
     border: 1px solid #96A7A6;
     font-size: 10px;
+    display: none;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
@@ -917,23 +921,68 @@ header#masthead {
     width: 120px;
     margin: 20px auto;
 }
-#page, #homepage #masthead {
-	width: 90%;
-	margin: 0px auto;	
+.woocommerce .products ul .popup-view, .woocommerce ul.products .popup-view {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    display: none;
+    position: fixed;
+    z-index: 30;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(25,2,2,.8); 
+}
+.woocommerce .products ul .popup-view .popup-product, .woocommerce ul.products .popup-view .popup-product {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    position: fixed;
+    padding: 30px 10px 10px 10px;
+    overflow-y: scroll;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 70%;
+    background-color: white;
+    transform: translateX(-50%) translateY(-50%);
+}
+.woocommerce .products ul .popup-view .popup-product .close, .woocommerce ul.products .popup-view .popup-product .close{
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    top: 20px;
+    right: 30px;
+    position: absolute;
+    z-index:10;
+    cursor: pointer;
+}
+.woocommerce .products ul .popup-view .popup-product .images img, .woocommerce ul.products .popup-view .popup-product .images img {
+    width: 100%;
+}
+#page {
+	width: 100%;
+	margin: 0	
 	/*overflow: hidden;*/
+}
+#main {
+    margin: 0 auto;
+    width: 90%;
+}
+.home #main {
+    width: 100%;
+    margin: 0;
 }
 #primary, #primary-home {
 	/*width: 100%;*/
 	margin: 0px 0 0 0;	
 }
-#homepage {
-    width: 100%;
-    margin: 0;
-}
 .home #colophon {
     margin-top: 0;
 }
-#homepage #content .row-1, #homepage #content .row-2 {
+.home #content .row-1, .home #content .row-2 {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
@@ -941,30 +990,30 @@ header#masthead {
     align-items: stretch;
     align-content: center;
 }
-#homepage #content .row-1 {
+.home #content .row-1 {
     margin: 0;
 }
- #homepage #content .row-2 {
+.home #content .row-2 {
     margin: 0;
  }
-#homepage #content .row-1 .tile-1,
-#homepage #content .row-1 .tile-2,
-#homepage #content .row-1 .tile-3,
-#homepage #content .row-2 .tile-1,
-#homepage #content .row-2 .tile-2,
-#homepage #content .row-2 .tile-3 {
+.home #content .row-1 .tile-1,
+.home #content .row-1 .tile-2,
+.home #content .row-1 .tile-3,
+.home #content .row-2 .tile-1,
+.home #content .row-2 .tile-2,
+.home #content .row-2 .tile-3 {
     position: relative;
     margin: 0;
     flex: 0 1 auto;
     width: 100%;
 }
 
-#homepage #content .row-1 .tile-1 a.surrounding,
-#homepage #content .row-1 .tile-2 a.surrounding,
-#homepage #content .row-1 .tile-3 a.surrounding,
-#homepage #content .row-2 .tile-1 a.surrounding,
-#homepage #content .row-2 .tile-2 a.surrounding,
-#homepage #content .row-2 .tile-3 a.surrounding {
+.home #content .row-1 .tile-1 a.surrounding,
+.home #content .row-1 .tile-2 a.surrounding,
+.home #content .row-1 .tile-3 a.surrounding,
+.home #content .row-2 .tile-1 a.surrounding,
+.home #content .row-2 .tile-2 a.surrounding,
+.home #content .row-2 .tile-3 a.surrounding {
     top: 0;
     left: 0;
     width: 100%;
@@ -973,12 +1022,12 @@ header#masthead {
     z-index: 2;
 }
 
-#homepage #content .row-1 .tile-1 img.background ,
-#homepage #content .row-1 .tile-2 img.background ,
-#homepage #content .row-1 .tile-3 img.background ,
-#homepage #content .row-2 .tile-1 img.background ,
-#homepage #content .row-2 .tile-2 img.background ,
-#homepage #content .row-2 .tile-3 img.background {
+.home #content .row-1 .tile-1 img.background ,
+.home #content .row-1 .tile-2 img.background ,
+.home #content .row-1 .tile-3 img.background ,
+.home #content .row-2 .tile-1 img.background ,
+.home #content .row-2 .tile-2 img.background ,
+.home #content .row-2 .tile-3 img.background {
     height: auto;
     width: 94%;
     max-width: 100%;
@@ -986,12 +1035,12 @@ header#masthead {
     display: block;
 }
 
-#homepage #content .row-1 .tile-1 img.hover ,
-#homepage #content .row-1 .tile-2 img.hover ,
-#homepage #content .row-1 .tile-3 img.hover ,
-#homepage #content .row-2 .tile-1 img.hover ,
-#homepage #content .row-2 .tile-2 img.hover ,
-#homepage #content .row-2 .tile-3 img.hover {
+.home #content .row-1 .tile-1 img.hover ,
+.home #content .row-1 .tile-2 img.hover ,
+.home #content .row-1 .tile-3 img.hover ,
+.home #content .row-2 .tile-1 img.hover ,
+.home #content .row-2 .tile-2 img.hover ,
+.home #content .row-2 .tile-3 img.hover {
     display: none;
     top: 0;
     padding: 1.5% 3%;
@@ -1002,12 +1051,12 @@ header#masthead {
     position: absolute;
     z-index: 1;
 }
-#homepage #content .row-1 .tile-1:hover img.hover ,
-#homepage #content .row-1 .tile-2:hover img.hover ,
-#homepage #content .row-1 .tile-3:hover img.hover ,
-#homepage #content .row-2 .tile-1:hover img.hover ,
-#homepage #content .row-2 .tile-2:hover img.hover ,
-#homepage #content .row-2 .tile-3:hover img.hover {
+.home #content .row-1 .tile-1:hover img.hover ,
+.home #content .row-1 .tile-2:hover img.hover ,
+.home #content .row-1 .tile-3:hover img.hover ,
+.home #content .row-2 .tile-1:hover img.hover ,
+.home #content .row-2 .tile-2:hover img.hover ,
+.home #content .row-2 .tile-3:hover img.hover {
     display: block;
 }
 .widget-area {
@@ -1216,6 +1265,12 @@ p.currentTextHolder,
 }
 .main-navigation a:hover {
 	color: #21759b;
+}
+.main-navigation #menu-primary-menu {
+    text-align: center;
+}
+.main-navigation #menu-primary-menu .sub-menu {
+    text-align: left;
 }
 .main-navigation ul.nav-menu,
 .main-navigation div.nav-menu > ul {
@@ -2965,74 +3020,77 @@ input.search-field {
 		margin: 0;
 	}
 	
-#page {
+#main {
 	width: 90%;
 	margin: 0px auto;	
 }
-#homepage {
+.home #main {
     width: 100%;
-    margin: 0 0 1.5% 0;
+    margin: 0;
 }
 .home #colophon {
     margin-top: 1.5%;
 }
-#homepage #content .row-1, #homepage #content .row-2 {
+.home #content .row-1, .home #content .row-2 {
     flex-wrap: nowrap;
 }
-#homepage #content .row-1 {
+.home #content .row-1 {
     margin: 1.5% 0;
 }
-#homepage #content .row-2 {
+.home #content .row-2 {
     margin: 1.5% 0 0 0;
 }
-#homepage #content .row-1 .tile-1,
-#homepage #content .row-1 .tile-2,
-#homepage #content .row-1 .tile-3,
-#homepage #content .row-2 .tile-1,
-#homepage #content .row-2 .tile-2,
-#homepage #content .row-2 .tile-3 {
+.home #content .row-1 .tile-1,
+.home #content .row-1 .tile-2,
+.home #content .row-1 .tile-3,
+.home #content .row-2 .tile-1,
+.home #content .row-2 .tile-2,
+.home #content .row-2 .tile-3 {
     margin: 0 .75%;
 }
 
-#homepage #content .row-1 .tile-1 {
+.home #content .row-1 .tile-1 {
     width: 32.6%;
 }
-#homepage #content .row-1 .tile-2 {
+.home #content .row-1 .tile-2 {
     width: 29%;
 }
-#homepage #content .row-1 .tile-3 {
+.home #content .row-1 .tile-3 {
     width: 32.3%;
 }
-#homepage #content .row-2 .tile-1 {
+.home #content .row-2 .tile-1 {
     width: 28.3%;
 }
-#homepage #content .row-2 .tile-2 {
+.home #content .row-2 .tile-2 {
     width: 44.4%;
 }
-#homepage #content .row-2 .tile-3 {
+.home #content .row-2 .tile-3 {
     width: 21.4%;
 }
-#homepage #content .row-1 .tile-1 img.background ,
-#homepage #content .row-1 .tile-2 img.background ,
-#homepage #content .row-1 .tile-3 img.background ,
-#homepage #content .row-2 .tile-1 img.background ,
-#homepage #content .row-2 .tile-2 img.background ,
-#homepage #content .row-2 .tile-3 img.background {
+.home #content .row-1 .tile-1 img.background ,
+.home #content .row-1 .tile-2 img.background ,
+.home #content .row-1 .tile-3 img.background ,
+.home #content .row-2 .tile-1 img.background ,
+.home #content .row-2 .tile-2 img.background ,
+.home #content .row-2 .tile-3 img.background {
     padding: 0;
     height: 100%;
     width: 100%;
 }
-#homepage #content .row-1 .tile-1 img.hover ,
-#homepage #content .row-1 .tile-2 img.hover ,
-#homepage #content .row-1 .tile-3 img.hover ,
-#homepage #content .row-2 .tile-1 img.hover ,
-#homepage #content .row-2 .tile-2 img.hover ,
-#homepage #content .row-2 .tile-3 img.hover {
+.home #content .row-1 .tile-1 img.hover ,
+.home #content .row-1 .tile-2 img.hover ,
+.home #content .row-1 .tile-3 img.hover ,
+.home #content .row-2 .tile-1 img.hover ,
+.home #content .row-2 .tile-2 img.hover ,
+.home #content .row-2 .tile-3 img.hover {
     padding: 0;
     height: 100%;
     width: 100%;
 }
-
+.woocommerce .products ul .popup-view .popup-product, .woocommerce ul.products .popup-view .popup-product {
+    width: 50%;
+    padding: 50px 20px 20px 20px;
+}
 #primary {
 	margin: 50px 0 0 0;	
 }
@@ -3050,7 +3108,7 @@ input.search-field {
 /* Social */
 #socialheader {
 	float: right;
-	margin: 0px 0px 0 0;
+	margin: 0px 20px 0px 0px;
 }
 /* = Bio
 -------------------------------------------------------------- */
@@ -3225,7 +3283,6 @@ input.search-field {
 	}
 	html,body {overflow-x:hidden}/* prevents the large dropdown from adding the scroll bar*/
 	.main-navigation {
-		width: 100%;
 		clear:both;	
 	}
 	.main-navigation ul.nav-menu,
@@ -3356,7 +3413,6 @@ div#sl_div div#map {
 	float: right;
 }
 #map_sidebar {
-    display: none;
 	width: 50%;
 	float: left;	
 }
@@ -3428,9 +3484,13 @@ input#mc-embedded-subscribe {
 #socialheader {
 	margin: 0px 20px 0 0;
 }
-#page, #homepage #masthead {
+#main {
 	width: 1040px;
 	margin: 0px auto;	
+}
+.home #main {
+    width: 100%;
+    margin: 0;
 }
 .footer-inside {
 	width: 1040px;

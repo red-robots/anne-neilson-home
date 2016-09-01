@@ -3,7 +3,7 @@
 	 get_template_part('maintenance/splashpage');
  } else {*/
 
-get_header("home"); ?>
+get_header(); ?>
 
 <!-- Used to only show popout newsletter on homepage -->
 <span id="homepage-flag" style="display: none" ></span>
