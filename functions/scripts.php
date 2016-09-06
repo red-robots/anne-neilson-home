@@ -12,6 +12,9 @@
 			'custom',
 			get_bloginfo('template_directory') . '/js/custom.js',
 			array('jquery') );
+		wp_localize_script( 'custom', 'myajaxurl', array(
+            'url' => admin_url( 'admin-ajax.php' )
+        ));
 		wp_enqueue_script('custom');
 
 		// Equal Heights Divs

@@ -195,14 +195,14 @@ html[xmlns] .slides {
    background-position: -5px 0px;
 	background-color: #96A7A6;
    text-indent: -9000px;
-   width: 30px !important;
+   width: 25px !important;
 }
 .flexslider .flex-direction-nav a.flex-next {
    /* content: '\f002';*/
-   background-position: -45px 0px;
+   background-position: -50px 0px;
 	background-color: #96A7A6;
    text-indent: -9000px;
-   width: 30px !important;
+   width: 25px !important;
 }
 
 /* Pause/Play */

@@ -108,7 +108,12 @@ add_filter('woocommerce_related_products_args','wc_remove_related_products', 10)
 add_filter('loop_shop_columns', 'loop_columns');
 if (!function_exists('loop_columns')) {
 	function loop_columns() {
-		return 4; // 3 products per row
+		if(is_product_category('notecards')){
+            return 2;
+		}
+		else {
+            return 4; // 3 products per row
+        }
 	}
 }
 // Show another pic instead of featured iamges
@@ -274,7 +279,7 @@ function my_sort_booksigning( $vars ) {
 
 function my_popup_view( ){?>
     <div class="popup-view">
-        <div class="popup-product">
+        <article class="popup-product">
             <div class="close">X</div><!--.close-->
             <div id="product-<?php the_ID(); ?>" class="product">
                 <div class="images">
@@ -313,7 +318,78 @@ function my_popup_view( ){?>
                     ?>
                 </div><!-- .summary -->
             </div><!-- #product-<?php the_ID(); ?> -->
-        </div><!--.popup-product-->
+        </article><!--.popup-product-->
     </div><!--.popup-view-->
 <?php }
 add_action('woocommerce_after_shop_loop_item' , 'my_popup_view');
+
+add_action( 'wp_ajax_add_cart', 'my_ajax_add_cart' );
+add_action( 'wp_ajax_nopriv_add_cart', 'my_ajax_add_cart' );
+function my_ajax_add_cart() {
+    if(isset($_POST['id'])){
+        $id = intval( $_POST['id'] );
+        WC()->cart->add_to_cart( $id );
+        $status = 1;
+    } else {
+        $status = 0;
+    }
+    $response = array(
+        'what'=>'cart',
+        'action'=>'add_cart',
+        'id'=>$status,
+    );
+    $xmlResponse = new WP_Ajax_Response($response);
+    $xmlResponse->send();
+    die(0);
+}
+
+
+add_action( 'wp_ajax_get_cart', 'my_ajax_get_cart' );
+add_action( 'wp_ajax_nopriv_get_cart', 'my_ajax_get_cart' );
+function my_ajax_get_cart() {
+    $return = do_action( 'woocommerce_before_cart_contents' );
+    $return = "";
+    foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+        $_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+        $product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+        if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+            $return.='<div class="product-box"><div class="product-thumbnail">';
+            $thumbnail = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
+            if ( ! $_product->is_visible() ) {
+                $return.=$thumbnail;
+            } else {
+                $return.=sprintf( '<a href="%s">%s</a>', esc_url( $_product->get_permalink( $cart_item ) ), $thumbnail );
+            }
+            $return.='</div><!--.product-thumbnail--><div class="product-info"><div class="product-name">';
+            if ( ! $_product->is_visible() ) {
+                $return.=apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key ) . '&nbsp;';
+            } else {
+                $return.=apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s">%s </a>', esc_url( $_product->get_permalink( $cart_item ) ), $_product->get_title() ), $cart_item, $cart_item_key );
+            } 
+            $return.='</div><!--.product-name--><div class="product-quantity">';
+            $return.="Quantity: ".$cart_item['quantity'].'</div><!--.product-quantity--><div class="product-price">';
+            $return.="Price: ".apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ).'</div><!--.product-price--></div><!--.product-info--></div><!--.product-box-->';
+        }
+    }
+    $return.=do_action( 'woocommerce_cart_contents' );
+    $return.=do_action( 'woocommerce_after_cart_contents' );
+    $return.='<div class="subtotal">Subtotal - '.WC()->cart->get_cart_total().'</div><!--.subtotal-->';
+    $return.='<div class="checkout button">Checkout<a class="surrounding" href="'.wc_get_cart_url().'"></a></div><!--.checkout .button-->';
+    $response = array(
+        'what'=>'cart',
+        'action'=>'get_cart',
+        'id'=>'1',
+        'data'=>$return
+    );
+    $xmlResponse = new WP_Ajax_Response($response);
+    $xmlResponse->send();
+    die(0);
+}
+
+function my_popup_checkout(){?>
+    <div class="popup-checkout">
+    </div>
+<?php }
+add_action('woocommerce_before_single_product' , 'my_popup_checkout');
+add_action('woocommerce_archive_description' , 'my_popup_checkout');
+

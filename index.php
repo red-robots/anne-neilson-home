@@ -21,6 +21,9 @@ get_header(); ?>
                     <?php if(get_field("image_2")){ ?>
                         <img class="background" src="<?php echo wp_get_attachment_image_src(get_field("image_2"),"full")[0];?>" alt="<?php echo get_post(get_field("image_2"))->post_title;?>">
                     <?php } ?>
+                    <?php if(get_field("image_2")){ ?>
+                        <img class="sizing" src="<?php bloginfo('template_url'); ?>/images/bg-2.png" alt="image-2 background">
+                    <?php } ?>
                     <?php if(get_field("image_2_hover")){ ?>
                         <img class="hover" src="<?php echo wp_get_attachment_image_src(get_field("image_2_hover"),"full")[0];?>" alt="<?php echo get_post(get_field("image_2_hover"))->post_title;?>">
                     <?php } ?>
@@ -40,6 +43,9 @@ get_header(); ?>
                 <div class="tile-2">
                     <?php if(get_field("image_3")){ ?>
                         <img class="background" src="<?php echo wp_get_attachment_image_src(get_field("image_3"),"full")[0];?>" alt="<?php echo get_post(get_field("image_3"))->post_title;?>">
+                    <?php } ?>
+                    <?php if(get_field("image_3")){ ?>
+                        <img class="sizing" src="<?php bloginfo('template_url'); ?>/images/bg-3.png" alt="image-3 background">
                     <?php } ?>
                     <?php if(get_field("image_3_hover")){ ?>
                         <img class="hover" src="<?php echo wp_get_attachment_image_src(get_field("image_3_hover"),"full")[0];?>" alt="<?php echo get_post(get_field("image_3_hover"))->post_title;?>">
@@ -61,6 +67,9 @@ get_header(); ?>
                 <div class="tile-3">
                     <?php if(get_field("image_4")){ ?>
                         <img class="background" src="<?php echo wp_get_attachment_image_src(get_field("image_4"),"full")[0];?>" alt="<?php echo get_post(get_field("image_4"))->post_title;?>">
+                    <?php } ?>
+                    <?php if(get_field("image_4")){ ?>
+                        <img class="sizing" src="<?php bloginfo('template_url'); ?>/images/bg-4.png" alt="image-4 background">
                     <?php } ?>
                     <?php if(get_field("image_4_hover")){ ?>
                         <img class="hover" src="<?php echo wp_get_attachment_image_src(get_field("image_4_hover"),"full")[0];?>" alt="<?php echo get_post(get_field("image_4_hover"))->post_title;?>">
@@ -85,6 +94,9 @@ get_header(); ?>
                     <?php if(get_field("image_5")){ ?>
                         <img class="background" src="<?php echo wp_get_attachment_image_src(get_field("image_5"),"full")[0];?>" alt="<?php echo get_post(get_field("image_5"))->post_title;?>">
                     <?php } ?>
+                    <?php if(get_field("image_5")){ ?>
+                        <img class="sizing" src="<?php bloginfo('template_url'); ?>/images/bg-5.png" alt="image-5 background">
+                    <?php } ?>
                     <?php if(get_field("image_5_hover")){ ?>
                         <img class="hover" src="<?php echo wp_get_attachment_image_src(get_field("image_5_hover"),"full")[0];?>" alt="<?php echo get_post(get_field("image_5_hover"))->post_title;?>">
                     <?php } ?>
@@ -106,6 +118,9 @@ get_header(); ?>
                     <?php if(get_field("image_6")){ ?>
                         <img class="background" src="<?php echo wp_get_attachment_image_src(get_field("image_6"),"full")[0];?>" alt="<?php echo get_post(get_field("image_6"))->post_title;?>">
                     <?php } ?>
+                    <?php if(get_field("image_6")){ ?>
+                        <img class="sizing" src="<?php bloginfo('template_url'); ?>/images/bg-6.png" alt="image-6 background">
+                    <?php } ?>
                     <?php if(get_field("image_6_hover")){ ?>
                         <img class="hover" src="<?php echo wp_get_attachment_image_src(get_field("image_6_hover"),"full")[0];?>" alt="<?php echo get_post(get_field("image_6_hover"))->post_title;?>">
                     <?php } ?>
@@ -126,6 +141,9 @@ get_header(); ?>
                 <div class="tile-3">
                     <?php if(get_field("image_7")){ ?>
                         <img class="background" src="<?php echo wp_get_attachment_image_src(get_field("image_7"),"full")[0];?>" alt="<?php echo get_post(get_field("image_7"))->post_title;?>">
+                    <?php } ?>
+                    <?php if(get_field("image_7")){ ?>
+                        <img class="sizing" src="<?php bloginfo('template_url'); ?>/images/bg-7.png" alt="image-7 background">
                     <?php } ?>
                     <?php if(get_field("image_7_hover")){ ?>
                         <img class="hover" src="<?php echo wp_get_attachment_image_src(get_field("image_7_hover"),"full")[0];?>" alt="<?php echo get_post(get_field("image_7_hover"))->post_title;?>">

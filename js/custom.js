@@ -19,12 +19,49 @@ jQuery(document).ready(function ($) {
     $('.archive .product .popup-view').on('click',function(){
         $(this).toggle();
     });
-    $('.archive .product .popup-view .popup-product .close').on('click',function(){
-        $(this).parents('.product').eq(0).find('.popup-view').toggle();
+    $('.archive .product .popup-view .popup-product .close, .archive .product .popup-view .popup-product form.cart button[type=submit]').on('click',function(){
+        console.log("hrere");
+        $(this).parents('.popup-view').eq(0).toggle();
     });
     $('.archive .product .popup-view .popup-product').on('click',function(e){
         e.stopPropagation();
     });
+    function my_cart_adder(){
+        $('form.cart').find('button[type=submit]').on('click',function(e){
+            e.preventDefault();
+            var $form = $(this).parents('form.cart').eq(0);
+            var id = $form.find('input[name="add-to-cart"]').attr('value');
+            var qty = $form.find('input[name="quantity"]').attr('value');
+            console.log("id:"+id);
+            jQuery.post(
+                myajaxurl.url, 
+                {
+                    'action': 'add_cart',
+                    'id': id,
+                    'qty':qty,
+                }, 
+                function(response){
+                    if(Number($(response).find("cart").attr("id"))===1){
+                        jQuery.post(
+                            myajaxurl.url, 
+                            {
+                                'action': 'get_cart',
+                                'data':'',
+                            }, 
+                            function(response){
+                                if($(response).find("response_data").length>0){
+                                    $text = $(response).find("response_data").eq(0).text();
+                                    $('.popup-cart').html($text);
+                            
+                                }
+                            }
+                        );
+                    }
+                }
+            );
+        });
+    }
+    my_cart_adder();
 
 if($("#homepage-flag").length > 0) {	
  if (document.cookie.indexOf('visited=true') == -1) {
