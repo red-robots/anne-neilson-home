@@ -127,7 +127,7 @@
         <div class="head-right">
             <div id="socialheader">
                 <ul>
-                    <li class="cart">Cart</li>
+                    <li class="cart"><a href="<?php bloginfo('url'); ?>/cart"><?php echo WC()->cart->get_cart_contents_count();?></a></li>
                 </ul>
             </div><!-- social header -->
             <div id="sb-search" class="sb-search">
@@ -179,7 +179,7 @@
                     ?>
                 <?php do_action( 'woocommerce_after_cart_contents' ); ?>
                 <div class="subtotal">Subtotal - <?php echo WC()->cart->get_cart_total(); ?></div><!--.subtotal-->
-                <div class="checkout button">Checkout<a class="surrounding" href="<?php bloginfo('url'); ?>/cart"></a></div><!--.checkout .button-->
+                <div class="checkout button">Checkout<a class="surrounding" href="<?php echo WC()->cart->get_checkout_url() ?>"></a></div><!--.checkout .button-->
             </div><!--.popup-cart-->
         </div><!-- head right -->
         

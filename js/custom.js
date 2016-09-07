@@ -8,11 +8,36 @@
 jQuery(document).ready(function ($) {
 
   $('.blocks').matchHeight();
-  
-    $('#socialheader ul li.cart').on('click',function() {
-        $('.popup-cart').toggle();
+    
+  $('.image-wrapper').hover(function(){
+        $(this).find('.overlay').css("display","block");
+    },function(){
+        $(this).find('.overlay').css("display","none");
     });
-    $('.archive .product img').not('.popup-view img').on('click',function(e) {
+   
+    $('#socialheader ul li.cart').hover(function() {
+        if($('.head-right .popup-cart').attr("data-timeout")!==undefined){
+            clearTimeout(Number($('.head-right .popup-cart').attr("data-timeout")));
+        }
+        $('.head-right .popup-cart').css("display","block");
+    }, function(){
+        var timeout = setTimeout(function(){
+            $('.head-right .popup-cart').css("display","none");
+        },300);
+        $('.head-right .popup-cart').attr("data-timeout",timeout);
+    });
+    $('.head-right .popup-cart').hover(function() {
+        if($('.head-right .popup-cart').attr("data-timeout")!==undefined){
+            clearTimeout(Number($('.head-right .popup-cart').attr("data-timeout")));
+        }
+        $('.head-right .popup-cart').css("display","block");
+    }, function(){
+        var timeout = setTimeout(function(){
+            $('.head-right .popup-cart').css("display","none");
+        },300);
+        $('.head-right .popup-cart').attr("data-timeout",timeout);
+    });
+    $('.archive .product .image-wrapper .overlay').on('click',function(e) {
         e.preventDefault();
         $(this).parents('.product').eq(0).find('.popup-view').toggle();
     });
@@ -20,7 +45,6 @@ jQuery(document).ready(function ($) {
         $(this).toggle();
     });
     $('.archive .product .popup-view .popup-product .close, .archive .product .popup-view .popup-product form.cart button[type=submit]').on('click',function(){
-        console.log("hrere");
         $(this).parents('.popup-view').eq(0).toggle();
     });
     $('.archive .product .popup-view .popup-product').on('click',function(e){
@@ -32,7 +56,7 @@ jQuery(document).ready(function ($) {
             var $form = $(this).parents('form.cart').eq(0);
             var id = $form.find('input[name="add-to-cart"]').attr('value');
             var qty = $form.find('input[name="quantity"]').attr('value');
-            console.log("id:"+id);
+            //add to cart
             jQuery.post(
                 myajaxurl.url, 
                 {
@@ -42,6 +66,7 @@ jQuery(document).ready(function ($) {
                 }, 
                 function(response){
                     if(Number($(response).find("cart").attr("id"))===1){
+                        //update cart popup
                         jQuery.post(
                             myajaxurl.url, 
                             {
@@ -53,6 +78,44 @@ jQuery(document).ready(function ($) {
                                     $text = $(response).find("response_data").eq(0).text();
                                     $('.popup-cart').html($text);
                             
+                                }
+                            }
+                        );
+                        //update cart popup
+                        jQuery.post(
+                            myajaxurl.url, 
+                            {
+                                'action': 'get_cart_count',
+                                'data':'',
+                            }, 
+                            function(response){
+                                if($(response).find("response_data").length>0){
+                                    $text = $(response).find("response_data").eq(0).text();
+                                    $('#socialheader ul li.cart a').html($text);
+                            
+                                }
+                            }
+                        );
+                        //invoke checkout popup
+                        jQuery.post(
+                            myajaxurl.url, 
+                            {
+                                'action': 'get_checkout_popup',
+                                'id':id,
+                            }, 
+                            function(response){
+                                if($(response).find("response_data").length>0){
+                                    $text = $(response).find("response_data").eq(0).text();
+                                    $('body').append($text);
+                                    $('.popup-checkout .popup-checkout-overlay .top-bar .close, .popup-checkout .popup-checkout-overlay .continue.button').on('click',function(){
+                                        $(this).parents('.popup-checkout').eq(0).remove();
+                                    });
+                                    $('.popup-checkout').on('click',function(){
+                                        $(this).remove();
+                                    });
+                                    $('.popup-checkout .popup-checkout-overlay').on('click',function(e){
+                                        e.stopPropagation();
+                                    });
                                 }
                             }
                         );
