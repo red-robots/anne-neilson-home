@@ -178,8 +178,10 @@
                     do_action( 'woocommerce_cart_contents' );
                     ?>
                 <?php do_action( 'woocommerce_after_cart_contents' ); ?>
-                <div class="subtotal">Subtotal - <?php echo WC()->cart->get_cart_total(); ?></div><!--.subtotal-->
-                <div class="checkout button">Checkout<a class="surrounding" href="<?php echo WC()->cart->get_checkout_url() ?>"></a></div><!--.checkout .button-->
+                <div class="totals-checkout">
+                    <div class="subtotal">Subtotal - <?php echo WC()->cart->get_cart_total(); ?></div><!--.subtotal-->
+                    <div class="checkout button">Checkout<a class="surrounding" href="<?php echo WC()->cart->get_checkout_url() ?>"></a></div><!--.checkout .button-->
+                </div><!--.totals-checkout-->
             </div><!--.popup-cart-->
         </div><!-- head right -->
         

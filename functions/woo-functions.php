@@ -282,7 +282,9 @@ function my_sort_booksigning( $vars ) {
 function my_popup_view( ){?>
     <div class="popup-view">
         <article class="popup-product">
-            <div class="close">X</div><!--.close-->
+            <div class="top-bar">
+                <div class="close">X</div><!--.close-->
+            </div><!--.top-bar-->
             <div id="product-<?php the_ID(); ?>" class="product">
                 <div class="images">
                         <?php if(get_field('alternate_featured_image')!="") {
@@ -431,8 +433,8 @@ function my_ajax_get_checkout_popup() {
                     $return.='</div><!--.product-name--><div class="product-quantity">';
                     $return.="Quantity: ".$cart_item['quantity'].'</div><!--.product-quantity--><div class="product-price">';
                     $return.="Price: ".apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key ).'</div><!--.product-price-->';
-                    $return.='<div class="continue button">Continue Shopping</div><!--.continue.button-->';
-                    $return.='<div class="checkout button">Checkout<a class="surrounding" href="'.WC()->cart->get_checkout_url().'"></a></div><!--.checkout .button-->';
+                    $return.='<div class="buttons"><div class="continue button">Continue Shopping</div><!--.continue.button-->';
+                    $return.='<div class="checkout button">Checkout<a class="surrounding" href="'.WC()->cart->get_checkout_url().'"></a></div><!--.checkout .button--></div><!--.buttons-->';
                     $return.='</div><!--.product-info--></div><!--.product-box-->';
                 }
                 break;

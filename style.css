@@ -886,6 +886,9 @@ header#masthead {
 }
 .popup-cart .product-box .product-info .product-name {
     margin: 0 0 15px 0;
+    font-family: FuturaPT-Light;
+    font-weight: 300;
+    font-size: 12px;
     
 }
 .popup-cart .product-box .product-info .product-name a {
@@ -894,23 +897,32 @@ header#masthead {
 .popup-cart .product-box .product-info .product-quantity {
     font-weight: 700;
     margin: 0 0 15px 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10px;
     
 }
 .popup-cart .product-box .product-info .product-price {
     font-weight: 700;
     margin: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10px;
     
 }
-.popup-cart .subtotal {
-    font-size: 12pt;
+.popup-cart .totals-checkout {
+    text-align: center;
+}
+.popup-cart .totals-checkout .subtotal {
+    font-size: 16pt;
     text-align: center;
     margin: 20px 20px 0 20px;
+    font-family: FuturaPT-Light;
+    font-weight: 300;
 }
-.popup-cart .checkout.button a.surrounding:hover {
+.popup-cart .totals-checkout .checkout.button a.surrounding:hover {
     text-decoration:none;
     cursor: pointer;
 }
-.popup-cart .checkout.button a.surrounding {
+.popup-cart .totals-checkout .checkout.button a.surrounding {
     position: absolute;
     top: 0;
     left: 0;
@@ -918,16 +930,18 @@ header#masthead {
     height: 100%;
     z-index: 2;
 }
-.popup-cart .checkout.button {
+.popup-cart .totals-checkout .checkout.button {
     position: relative;
     font-size: 12pt;
     text-align: center;
     background-color: #96A7A6;
     color: white;
     text-transform: uppercase;
-    padding: 6px;
-    width: 120px;
-    margin: 20px auto;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 20px 0;
+    font-family: FuturaPT-Light;
+    font-weight: 600;
 }
 /* Notecards Override*/
 .woocommerce.term-notecards ul.products li.product {
@@ -1012,6 +1026,8 @@ header#masthead {
 	color: #96A7A6;
     font-size: 16px;
     float: left;
+    font-family: FuturaPT-Light;
+    font-weight: 600;
 }
 .popup-checkout .popup-checkout-overlay .top-bar .close {
     width: 16px;
@@ -1047,7 +1063,9 @@ header#masthead {
 .popup-checkout .popup-checkout-overlay .product-box .product-info .product-name {
     margin: 0 0 10px 0;
     text-transform:uppercase;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: FuturaPT-Light;
+    font-weight: 300;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info .product-name a {
     text-decoration: none;
@@ -1056,13 +1074,17 @@ header#masthead {
     font-weight: 700;
     font-size: 14px;
     margin: 0 0 10px 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info .product-price {
     font-weight: 700;
     font-size: 14px;
     margin: 0 0 30px 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+.popup-checkout .popup-checkout-overlay .product-box .product-info .buttons {
+    text-align: center;
+}
 .popup-checkout .popup-checkout-overlay .product-box .product-info .checkout.button a.surrounding:hover {
     text-decoration:none;
     cursor: pointer;
@@ -1082,9 +1104,11 @@ header#masthead {
     background-color: #96A7A6;
     color: white;
     text-transform: uppercase;
-    padding: 6px;
-    width: 150px;
-    margin: 10px auto 0 auto;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 10px;
+    font-family: FuturaPT-Light;
+    font-weight: 600;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info .continue.button {
     position: relative;
@@ -1093,9 +1117,11 @@ header#masthead {
     background-color: #96A7A6;
     color: white;
     text-transform: uppercase;
-    padding: 6px;
-    width: 200px;
-    margin: 10px auto 0 auto;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 10px;
+    font-family: FuturaPT-Light;
+    font-weight: 600;
 }
 .popup-checkout .popup-checkout-overlay .bottom-bar {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -1112,6 +1138,8 @@ header#masthead {
 	color: rgba(110,153,142,1);
     font-size: 16px;
     margin-top: 10px;
+    font-family: FuturaPT-Light;
+    font-weight: 300;
     
 }
 .popup-checkout .popup-checkout-overlay .bottom-bar .subtotal{
@@ -1120,6 +1148,8 @@ header#masthead {
 	color: rgba(110,153,142,1);
     font-size: 16px;
     margin-top: 10px;
+    font-family: FuturaPT-Light;
+    font-weight: 300;
 }
     
 .popup-checkout .popup-checkout-overlay .bottom-bar:after {
@@ -1133,15 +1163,27 @@ header#masthead {
         overflow-y: hidden;
     }
 }*/
-.woocommerce .products ul .popup-view .popup-product .close, .woocommerce ul.products .popup-view .popup-product .close{
+.woocommerce .products ul .popup-view .popup-product .top-bar, .woocommerce ul.products .popup-view .popup-product .top-bar {
+    position: relative;
+    padding: 20px 30px;
+}
+.woocommerce .products ul .popup-view .popup-product .top-bar:after, .woocommerce ul.products .popup-view .popup-product .top-bar:after {
+    clear: both;
+    display: block;
+    content: "";
+}
+.woocommerce .products ul .popup-view .popup-product .top-bar .close, .woocommerce ul.products .popup-view .popup-product .top-bar .close{
     width: 16px;
     height: 16px;
     font-size: 16px;
-    top: 20px;
-    right: 30px;
-    position: absolute;
-    z-index:10;
+    float: right;
     cursor: pointer;
+}
+.woocommerce .products ul .popup-view .popup-product .images, .woocommerce ul.products .popup-view .popup-product .images {
+    padding: 0 30px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
 }
 .woocommerce .products ul .popup-view .popup-product .images img, .woocommerce ul.products .popup-view .popup-product .images img {
     width: 100%;
@@ -1149,7 +1191,11 @@ header#masthead {
 
 .woocommerce .products ul .popup-view .popup-product .summary.entry-summary, .woocommerce ul.products .popup-view .popup-product .summary.entry-summary{
     line-height: 1.4;
-    margin-bottom: 0;
+    margin-bottom: 20px;
+    padding: 0 30px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
 }
 .woocommerce #content .products ul .popup-view .popup-product .summary.entry-summary h1, .woocommerce #content ul.products .popup-view .popup-product .summary.entry-summary h1{
     font-size: 30px;
@@ -1280,7 +1326,6 @@ header#masthead {
 .image-wrapper .overlay {
     text-transform: uppercase;
     text-align: center;
-    font-size: 100%;
     background-color: rgba(155,164,174,.8);
     width: 100%;
     bottom: 0;
@@ -1289,6 +1334,9 @@ header#masthead {
     position: absolute;
     display: none;
     color: white;
+    font-size: 16px;
+    font-family: FuturaPT-Light;
+    font-weight: 300;
 }
 .widget-area {
 	margin: 24px 0 0;
@@ -3347,11 +3395,21 @@ footer[role="contentinfo"] .button.wrapper {
 }
 .woocommerce .products ul .popup-view .popup-product, .woocommerce ul.products .popup-view .popup-product {
     width: 70%;
-    padding: 50px 20px 20px 20px;
+    padding: 0;
+    max-width: 900px;
+    max-height: 500px;
+}
+.woocommerce .products ul .popup-view .popup-product .images, .woocommerce ul.products .popup-view .popup-product .images {
+    padding: 0 0 0 30px;
+}
+.woocommerce .products ul .popup-view .popup-product .summary.entry-summary, .woocommerce ul.products .popup-view .popup-product .summary.entry-summary{
+    padding: 0 30px 0 0;
 }
 .popup-checkout .popup-checkout-overlay {
-    width: 70%;
+    width: 60%;
     padding: 0;
+    max-width: 771px;
+    max-height: 355px;
 }
 #primary {
 	margin: 50px 0 0 0;	
@@ -3368,21 +3426,20 @@ footer[role="contentinfo"] .button.wrapper {
     width: 100%;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info {
-    width: 60%;
+    width: 62.5%;
     float: right;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-thumbnail {
     margin-bottom: 0;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info .product-name {
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info .checkout.button {
     margin: 10px 0 0 10px;
     float: left;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info .continue.button {
-    width: 250px;
     margin: 10px 0;
     float: left;
 }
