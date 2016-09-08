@@ -31,9 +31,9 @@
 #share ul a
 {
 	text-decoration: none;
-	background-image: url(../images/social.png);
+	background-image: url(../images/icons.png);
 	background-repeat: no-repeat;
-	background-size: 226px 120px;
+	background-size: 240px 120px;
 	display: inline-block;
 	height: 30px;
 	width: 30px;

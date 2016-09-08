@@ -1393,20 +1393,22 @@ p.currentTextHolder,
 #socialheader  ul a, #socialfooter  ul a, .search-icon, #socialheader ul li.cart a {
 	text-decoration: none;
 	background-image: url(images/icons.png);
+    background-size: 360px 180px;
 	background-repeat: no-repeat;
 	display: inline-block;
 	height: 32px;
 	text-indent: -9000px;
 	position: relative;
 }
+/*
 #socialheader .search a {
 	width:32px;
-	background-position: -420px -0px;
+	background-position: -210px -0px;
 	position: relative;
 }
 #socialheader .search a:hover {
-	background-position: -420px -120px;
-}
+	background-position: -210px -60px;
+}*/
 .page-id-5 #socialheader ul li.cart{ 
     display: none;
 }
@@ -1423,11 +1425,11 @@ p.currentTextHolder,
     font-size: 12px;
     padding:12px 0 8px 0;
 	width:33px;
-	background-position: -434px -14px;
+	background-position: -321.5px -6.5px;
 	position: relative;
 }
 #socialheader  .cart a:hover {
-	background-position: -434px -134px;
+	background-position: -321.5px -96.5px;
 }
 #socialfooter {
 	width: 170px;
@@ -2823,7 +2825,7 @@ img#wpstats {
 }
 .search-icon { 
 	width: 32px;
-	background-position: -374px -14px;
+	background-position: -276.5px -6.5px;
 	margin: 0px 0 0 0;
 	position: absolute;
 	top: 0px;

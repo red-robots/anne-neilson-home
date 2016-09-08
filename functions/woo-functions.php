@@ -392,8 +392,8 @@ function my_ajax_get_cart() {
     }
     $return.=do_action( 'woocommerce_cart_contents' );
     $return.=do_action( 'woocommerce_after_cart_contents' );
-    $return.='<div class="subtotal">Subtotal - '.WC()->cart->get_cart_total().'</div><!--.subtotal-->';
-    $return.='<div class="checkout button">Checkout<a class="surrounding" href="'.WC()->cart->get_checkout_url().'"></a></div><!--.checkout .button-->';
+    $return.='<div class="totals-checkout"><div class="subtotal">Subtotal - '.WC()->cart->get_cart_total().'</div><!--.subtotal-->';
+    $return.='<div class="checkout button">Checkout<a class="surrounding" href="'.WC()->cart->get_checkout_url().'"></a></div><!--.checkout .button--></div><!--.totals-checkout-->';
     $response = array(
         'what'=>'cart',
         'action'=>'get_cart',
