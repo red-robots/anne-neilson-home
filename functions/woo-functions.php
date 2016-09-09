@@ -463,3 +463,24 @@ function my_ajax_get_checkout_popup() {
     $xmlResponse->send();
     die(0);
 }
+
+
+add_action( 'woocommerce_product_meta_end', 'my_product_tabs' );
+function my_product_tabs(){
+    if(get_field("description")||get_field("details")||get_field("tips")){
+        echo '<div class="product-tabs">';
+        echo '<div class="top-bar"><div class="title active" data-type="desc">Description</div><div class="title" data-type="details">Details</div><div class="title" data-type="tips">Tips</div></div><!--.top-bar-->';
+        echo '<div class="viewport">';
+        echo '<div class="copy" data-type="desc">';
+        if(get_field("description")){echo get_field("description");}
+        echo '</div><!--.copy-->';
+        echo '<div class="copy" data-type="details">';
+        if(get_field("details")){echo get_field("details");}
+        echo '</div><!--.copy-->';
+        echo '<div class="copy" data-type="tips">';
+        if(get_field("tips")){echo get_field("tips");}
+        echo '</div><!--.copy-->';
+        echo '</div><!--.viewport-->';
+        echo '</div><!--.product-tabs-->';
+    }
+}

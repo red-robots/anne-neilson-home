@@ -9,12 +9,14 @@ jQuery(document).ready(function ($) {
 
   $('.blocks').matchHeight();
     
-  $('.image-wrapper').hover(function(){
+    //image hover for icons on category/archive pages
+    $('.image-wrapper').hover(function(){
         $(this).find('.overlay').css("display","block");
     },function(){
         $(this).find('.overlay').css("display","none");
     });
-   
+    
+    //hover for cart icon
     $('#socialheader ul li.cart').hover(function() {
         if($('.head-right .popup-cart').attr("data-timeout")!==undefined){
             clearTimeout(Number($('.head-right .popup-cart').attr("data-timeout")));
@@ -37,6 +39,8 @@ jQuery(document).ready(function ($) {
         },300);
         $('.head-right .popup-cart').attr("data-timeout",timeout);
     });
+    
+    //functionality for closing popups
     $('.archive .product .image-wrapper .overlay').on('click',function(e) {
         e.preventDefault();
         $(this).parents('.product').eq(0).find('.popup-view').toggle();
@@ -50,7 +54,16 @@ jQuery(document).ready(function ($) {
     $('.archive .product .popup-view .popup-product').on('click',function(e){
         e.stopPropagation();
     });
-    function my_cart_adder(){
+    //functionality for continue shopping button on cart page
+    (function(){
+        var $backbutton = $('.page-id-5 .continue-shopping .button.wc-backward');
+        if($backbutton.length>0){
+            var history = window.history;
+            console.log("%O",history);
+        }
+    })();
+    //function to add items to cart
+    (function(){
         $('form.cart').find('button[type=submit]').on('click',function(e){
             e.preventDefault();
             var $form = $(this).parents('form.cart').eq(0);
@@ -123,8 +136,7 @@ jQuery(document).ready(function ($) {
                 }
             );
         });
-    }
-    my_cart_adder();
+    })();
 
 if($("#homepage-flag").length > 0) {	
  if (document.cookie.indexOf('visited=true') == -1) {
@@ -156,8 +168,20 @@ if($("#homepage-flag").length > 0) {
     }
 }
 
-
-
+$('.product-tabs .top-bar .title').on('click',function(){
+    var $this = $(this);
+    var type = $this.attr("data-type");
+    $('.product-tabs .top-bar .title').filter(".active").removeClass("active");
+    $this.addClass("active");
+    $('.product-tabs .viewport .copy').each(function(){
+        var $this = $(this);
+        if($this.attr('data-type')===type){
+            $this.css("display","block");
+        } else {
+            $this.css("display","none");
+        }
+    });
+});
 
 
 

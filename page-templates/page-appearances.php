@@ -97,7 +97,7 @@ get_header(); ?>
                     
         <?php endwhile; ?>        
     <?php endif; ?>
-    <h2 class="bookmonth">Past Appearances</h2>
+    <h2 class="bookmonth past-appearances-title">Past Appearances</h2>
     <?php 
 	// Set empty to start
 	$month = "";

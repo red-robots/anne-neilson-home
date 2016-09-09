@@ -89,14 +89,40 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
 	// All together now...
 	$pintrest = $Purl . $media . $Ptitle . ' - Anne Neilson Home';
 	
-	
+	/*
+        Email 
+    _______________________*/
+    $Eurl = "mailto:?";
+    $subject = "subject=".$title.' - Anne Neilson Home';
+    $body = '&body='.$permalink;
+	$email = $Eurl.$subject.$body;
 	?>
 <div id="share">
     <ul>
         <li class="facebook"><a href="<?php echo $facebook; ?>">Share on Facebook</a></li>
         <li class="twitter"><a href="<?php echo $twitter; ?>" target="_blank" data-related="AERIN">Tweet on Twitter</a></li>
         <li class="pintrest"><a href="<?php echo $pintrest; ?>" target="_blank">Pin on Pintrest</a></li>
+        <li class="email"><a href="<?php echo $email; ?>" target="_blank">Email</a></li>
     </ul>
 </div><!-- share -->
-</div>
-
+<?php
+    $link = '';
+    $cat_name = null;
+    $terms = get_the_terms($post->id,'product_cat');
+    if(!is_wp_error($terms)&&is_array($terms)&&!empty($terms)){
+        $cat_name = $terms[0]->name;
+        $tmp_link = get_term_link($terms[0]->term_id,'product_cat');
+        if(!is_wp_error($link)){
+            $link = $tmp_link;
+        } 
+    }
+?>
+<div class="return-button wrapper">
+    <div class="return-to-cat button"><a class="surrounding" href="<?php echo $link;?>">See Other <?php 
+    if(get_field("return_cat_name")){
+        echo get_field("return_cat_name");
+    } else {
+        echo $cat_name;
+    }?></a></div>
+    </div><!--.return-to-cat .button-->
+</div><!--.return-button .wrapper-->

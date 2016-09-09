@@ -92,7 +92,14 @@
 	background-position: -120px -30px;
 }
 
-
+#share:after {
+    clear:both;
+    display: block;
+    content: '';
+}
+#share ul {
+    margin: 20px 0;
+}
 /* Single View Share Icons */
 #share  .facebook a {
 	background-position: -0px -60px;
@@ -115,7 +122,13 @@
 #share  .pintrest a:hover {
 	background-position: -60px -90px;
 }
-
+#share .email a {
+	background-position: -150px -60px;
+	transition: opacity 0.3s ease;
+}
+#share .email a:hover {
+	background-position: -150px -90px;
+}
 @media screen and (min-width: 600px) {
     #sociallinks {
         margin: 0px auto 50px auto;	
