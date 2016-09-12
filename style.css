@@ -877,6 +877,10 @@ header#masthead {
 	position: relative;
 	margin: 10px auto;	
 }
+/* Remove highlighting */
+mark.count {
+    background-color: transparent;
+}
 .popup-cart {
     position: absolute;
     top: 110%;
@@ -931,14 +935,14 @@ header#masthead {
 .popup-cart .product-box .product-info .product-quantity {
     font-weight: 700;
     margin: 0 0 15px 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "NeutraTextDemiAlt", Georgia;
     font-size: 10px;
     
 }
 .popup-cart .product-box .product-info .product-price {
     font-weight: 700;
     margin: 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "NeutraTextDemiAlt", Georgia;
     font-size: 10px;
     
 }
@@ -1109,13 +1113,13 @@ header#masthead {
     font-weight: 700;
     font-size: 14px;
     margin: 0 0 10px 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "NeutraTextDemiAlt", Georgia;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info .product-price {
     font-weight: 700;
     font-size: 14px;
     margin: 0 0 30px 0;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "NeutraTextDemiAlt", Georgia;
 }
 .popup-checkout .popup-checkout-overlay .product-box .product-info .buttons {
     text-align: center;
@@ -1988,6 +1992,18 @@ footer[role="contentinfo"] .button.wrapper:hover {
     text-align: center;
     border-radius: 0px;
     width: 49%;
+}
+.footer-middle input.birthday::-webkit-input-placeholder {
+    color: white;
+}
+.footer-middle input.birthday:-moz-placeholder {
+    color: white;    
+}
+.footer-middle input.birthday::-moz-placeholder {
+    color: white;
+}
+.footer-middle input.birthday:-ms-placeholder {
+    color: white;    
 }
 .footer-middle input.birthday:first-child {
     float:left;
@@ -3134,7 +3150,6 @@ input.qty {max-width: 30px;}
 	/*font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;*/
     font-family: "NeutraTextDemiAlt", Georgia;
 	font-size: 13px;
-	font-style: italic;
 }
 .woocommerce div.product .product_title, .woocommerce #content div.product .product_title, .woocommerce-page div.product .product_title, .woocommerce-page #content div.product .product_title {
 	font-family: FuturaPT-Light;
