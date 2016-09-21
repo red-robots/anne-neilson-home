@@ -120,6 +120,7 @@ if (!function_exists('loop_columns')) {
 remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail');
 
 function change_image_shown( $args ) {
+    $product_title = sanitize_title_with_dashes(get_the_title());
 	if(get_field('alternate_featured_image')!="") {
 		// Get field Name
         $image = get_field('alternate_featured_image'); 
@@ -133,12 +134,12 @@ function change_image_shown( $args ) {
         $height = $image['sizes'][ $size . '-height' ];
     
         
-        echo '<div class="image-wrapper"><img src="' . $thumb . '" /><div class="overlay">Quick View</div><!--.overlay--></div><!--.image-wrapper-->';
+        echo '<div class="image-wrapper"><img src="' . $thumb . '" /><div class="overlay">Quick View<a class="surrounding quickview" href="#'.$product_title.'"></a></div><!--.overlay--></div><!--.image-wrapper-->';
 		
 	} elseif ( has_post_thumbnail() ) {
         echo '<div class="image-wrapper">';
         the_post_thumbnail();
-        echo '<div class="overlay">Quick View</div><!--.overlay--></div><!--.image-wrapper-->';
+        echo '<div class="overlay">Quick View<a class="surrounding quickview" href="#'.$product_title.'"></a></div><!--.overlay--></div><!--.image-wrapper-->';
     }
 }
 add_filter('woocommerce_before_shop_loop_item_title','change_image_shown', 10); 
@@ -279,15 +280,27 @@ function my_sort_booksigning( $vars ) {
 	return $vars;
 }
 
+add_action( 'woocommerce_single_product_summary', 'return_the_popup_view_description', 6 );
+function return_the_popup_view_description(){
+    if(get_field("popup_description")&&is_archive()){
+        echo get_field("popup_description");
+    }
+    else if(get_the_content()&&is_archive()){
+        the_content();
+    }
+}
+
 function my_popup_view( ){?>
-    <div class="popup-view">
-        <article class="popup-product">
+    <div style="display:none;">
+        <article class="popup-view" id="<?php echo sanitize_title_with_dashes(get_the_title());?>">
             <div class="top-bar">
-                <div class="close">X</div><!--.close-->
             </div><!--.top-bar-->
             <div id="product-<?php the_ID(); ?>" class="product">
                 <div class="images">
-                        <?php if(get_field('alternate_featured_image')!="") {
+                        <?php if(get_field("popup_image")){
+                            $alt = (get_post(get_field("popup_image"))!==null)?get_post(get_field("popup_image"))->post_title:"";
+                            echo '<img src="'.wp_get_attachment_image_src(get_field("popup_image"),"full")[0].'" alt="'.$alt.'">';
+                        } elseif(get_field('alternate_featured_image')!="") {
                             // Get field Name
                             $image = get_field('alternate_featured_image'); 
                             $url = $image['url'];
@@ -318,12 +331,14 @@ function my_popup_view( ){?>
                         * @hooked woocommerce_template_single_meta - 40
                         * @hooked woocommerce_template_single_sharing - 50
                         */
+                        remove_filter('woocommerce_single_product_summary','return_the_description',6);
                         do_action( 'woocommerce_single_product_summary' );
+                        add_action( 'woocommerce_single_product_summary', 'return_the_description', 6 );
                     ?>
                 </div><!-- .summary -->
             </div><!-- #product-<?php the_ID(); ?> -->
         </article><!--.popup-product-->
-    </div><!--.popup-view-->
+    </div><!--.display-none-->
 <?php }
 add_action('woocommerce_after_shop_loop_item' , 'my_popup_view');
 
@@ -411,7 +426,7 @@ add_action( 'wp_ajax_nopriv_get_checkout_popup', 'my_ajax_get_checkout_popup' );
 function my_ajax_get_checkout_popup() {
     if(isset($_POST['id'])){
         $id = intval( $_POST['id'] );
-        $return = '<div class="popup-checkout"><div class="popup-checkout-overlay"><div class="top-bar"><div class="title">Item Added to Shopping Cart</div><div class="close">X</div><!--.close--></div><!--.top-bar-->'; 
+        $return = '<div class="popup-checkout"><div class="top-bar"><div class="title">Item Added to Shopping Cart</div></div><!--.top-bar-->'; 
         foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
             if(intval($cart_item['product_id'])===$id){
                 $_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
@@ -449,7 +464,7 @@ function my_ajax_get_checkout_popup() {
         }
         $return.=' in Shopping Cart</div>';
         $return.='<div class="subtotal">Subtotal: '.WC()->cart->get_cart_total().'</div><!--.subtotal-->';
-        $return .= '</div><!--.bottom-bar--></div><!--.popup-checkout-overlay--></div><!--.popup-checkout-->';
+        $return .= '</div><!--.bottom-bar--></div><!--.popup-checkout-->';
     } else {
         $return = "<p>Couldn't find cart item</p>";
     }
@@ -467,9 +482,20 @@ function my_ajax_get_checkout_popup() {
 
 add_action( 'woocommerce_product_meta_end', 'my_product_tabs' );
 function my_product_tabs(){
+    if(is_archive())return;
     if(get_field("description")||get_field("details")||get_field("tips")){
         echo '<div class="product-tabs">';
-        echo '<div class="top-bar"><div class="title active" data-type="desc">Description</div><div class="title" data-type="details">Details</div><div class="title" data-type="tips">Tips</div></div><!--.top-bar-->';
+        echo '<div class="top-bar">';
+        if(get_field("description")){
+            echo '<div class="title" data-type="desc">Description</div>';
+        }
+        if(get_field("details")){
+            echo '<div class="title" data-type="details">Details</div>';
+        }
+        if(get_field("tips")){
+            echo '<div class="title" data-type="tips">Tips</div>';
+        }
+        echo '</div><!--.top-bar-->';
         echo '<div class="viewport">';
         echo '<div class="copy" data-type="desc">';
         if(get_field("description")){echo get_field("description");}
@@ -483,4 +509,28 @@ function my_product_tabs(){
         echo '</div><!--.viewport-->';
         echo '</div><!--.product-tabs-->';
     }
+}
+
+add_action( 'woocommerce_product_meta_end', 'my_add_see_more_cats' );
+function my_add_see_more_cats(){
+    if(!is_archive()){    
+        $link = '';
+        $cat_name = null;
+        $terms = get_the_terms(get_the_ID(),'product_cat');
+        if(!is_wp_error($terms)&&is_array($terms)&&!empty($terms)){
+            $cat_name = $terms[0]->name;
+            $tmp_link = get_term_link($terms[0]->term_id,'product_cat');
+            if(!is_wp_error($link)){
+                $link = $tmp_link;
+            } 
+        }
+        echo '<div class="return-button wrapper">';
+        echo '<div class="return-to-cat button">See Other ';
+            if(get_field("return_cat_name")){
+                echo get_field("return_cat_name");
+            } else {
+                echo $cat_name;
+            }
+        echo '<a class="surrounding" href="'.$link.'"></a></div></div><!--.return-to-cat .button--></div><!--.return-button .wrapper-->';
+    } 
 }

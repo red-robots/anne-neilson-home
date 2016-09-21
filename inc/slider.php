@@ -7,6 +7,8 @@
     $wp_query->query(array(
     'post_type'=>'slides',
     'posts_per_page' => -1,
+    'order'=>'ASC',
+    'orderby'=>'menu_order',
     'paged' => $paged,
 ));
     if ($wp_query->have_posts()) : ?>

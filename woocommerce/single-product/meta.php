@@ -105,24 +105,3 @@ $tag_count = sizeof( get_the_terms( $post->ID, 'product_tag' ) );
         <li class="email"><a href="<?php echo $email; ?>" target="_blank">Email</a></li>
     </ul>
 </div><!-- share -->
-<?php
-    $link = '';
-    $cat_name = null;
-    $terms = get_the_terms($post->id,'product_cat');
-    if(!is_wp_error($terms)&&is_array($terms)&&!empty($terms)){
-        $cat_name = $terms[0]->name;
-        $tmp_link = get_term_link($terms[0]->term_id,'product_cat');
-        if(!is_wp_error($link)){
-            $link = $tmp_link;
-        } 
-    }
-?>
-<div class="return-button wrapper">
-    <div class="return-to-cat button"><a class="surrounding" href="<?php echo $link;?>">See Other <?php 
-    if(get_field("return_cat_name")){
-        echo get_field("return_cat_name");
-    } else {
-        echo $cat_name;
-    }?></a></div>
-    </div><!--.return-to-cat .button-->
-</div><!--.return-button .wrapper-->

@@ -309,7 +309,9 @@ html[xmlns] .slides {
     opacity: 1;
     cursor: default;
 }
-
+#carousel .flex-direction-nav {
+    display: none;
+}
 @media screen and (max-width: 860px) {
     .flexslider .flex-direction-nav .flex-prev {
         opacity: 1;

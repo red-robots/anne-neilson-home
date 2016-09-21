@@ -2,11 +2,6 @@
 
 <div style="display: none;" class="">
     <div id="mc_embed_signup">
-
-    <div class="angel blocks">
-        <img src="<?php bloginfo('template_url'); ?>/images/angel.png">
-    </div>
-
     <div class="right-content blocks">
     <div class="right-padding">
     <!-- Begin MailChimp Signup Form -->
@@ -65,8 +60,8 @@
 
                         <div class="mc-list-group">
                             <ul>
-                                <li class="right"><input type="checkbox" value="1" name="group[6385][1]" id="mce-group[6385]-6385-0"><label for="mce-group[6385]-6385-0">Blog</label></li>
-                                <li class="left"><input type="checkbox" value="2" name="group[6385][2]" id="mce-group[6385]-6385-1"><label for="mce-group[6385]-6385-1">Products + Promotions</label></li>
+                                <li class="left"><input class="popup-input" type="checkbox" value="2" name="group[6385][2]" id="mce-group[6385]-6385-1"><label for="mce-group[6385]-6385-1" class="popup-label">Products + Promotions</label></li>
+                                <li class="right"><input class="popup-input" type="checkbox" value="1" name="group[6385][1]" id="mce-group[6385]-6385-0"><label class="popup-label" for="mce-group[6385]-6385-0">Blog</label></li>
                             </ul>
                         <!-- <div class="thelabel label-name"><label for="mce-group">INTERESTS</label> -->
                         </div><!-- mc-field-group -->

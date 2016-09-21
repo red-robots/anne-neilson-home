@@ -49,6 +49,7 @@ get_header(); ?>
 		
 		$staffTitle = get_field('staff_title');
 		$phone = get_field('phone');
+		$phone_2 = get_field('phone_2');
 		$email = get_field('email');
 		$antiSpam = antispambot($email);
         ?>
@@ -60,6 +61,7 @@ get_header(); ?>
      	<h3 class="staff"><?php the_title(); ?></h3>
         <div class="staff_title"><?php echo $staffTitle; ?></div>
         <?php if($phone != '') {echo '<div class="staff-item">'.$phone.'</div>';} ?>
+        <?php if($phone_2 != '') {echo '<div class="staff-item">'.$phone_2.'</div>';} ?>
         <?php if($email != '') {
 			echo '<div class="staff-item"><a href="mailto:'.$antiSpam.'">'.$antiSpam.'</a></div>';
 			} ?>

@@ -54,7 +54,30 @@ get_header(); ?>
 		<label for="mce-EMAIL">EMAIL  <span class="asterisk">*</span></label>
 	</div>
 
-	
+	<div class="mc-field-group">
+
+                        <div class="name-field">
+                            <input type="text" value="" name="NAME" class="" id="mce-NAME">
+                            <div class="thelabel label-name label-left">
+                                <label for="mce-NAME">NAME</label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="bday-field">
+
+                            <div class="datefield ">
+                                <div class="subfield monthfield birthday-field">
+                                <input class="birthday " type="text" pattern="[0-9]*" value="" placeholder="MM" size="2" maxlength="2" name="MMERGE3[month]" id="mce-MMERGE3-month">
+                                <input class="birthday " type="text" pattern="[0-9]*" value="" placeholder="DD" size="2" maxlength="2" name="MMERGE3[day]" id="mce-MMERGE3-day">
+                                
+                                </div> <!-- birthday-field -->
+                                <div class="thelabel label-name label-left">
+                                    <label for="mce-MMERGE3-month">BIRTHDAY </label>
+                                </div>
+                            </div><!-- date field -->
+                        </div>
 
 	<div id="mce-responses" class="clear">
 		<div class="response" id="mce-error-response" style="display:none"></div>
