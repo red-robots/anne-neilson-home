@@ -38,7 +38,14 @@ get_header( 'shop' ); ?>
 
 		<?php do_action( 'woocommerce_archive_description' ); ?>
 
-		<?php if ( have_posts() ) : ?>
+		<?php function my_orderby( $query ) {
+            if ( $query->is_main_query() ) {
+                $query->set( 'orderby', 'menu_order' );
+            }
+        }
+        add_action( 'pre_get_posts', 'my_orderby' );
+		
+		if ( have_posts() ) : ?>
 
 			<?php
 				/**

@@ -108,6 +108,9 @@ add_filter('woocommerce_related_products_args','wc_remove_related_products', 10)
 add_filter('loop_shop_columns', 'loop_columns');
 if (!function_exists('loop_columns')) {
 	function loop_columns() {
+		if(is_product_category('luxury-candle')){
+            return 3;
+		}
 		if(is_product_category('notecards')){
             return 2;
 		}
@@ -128,7 +131,7 @@ function change_image_shown( $args ) {
         $title = $image['title'];
         $alt = $image['alt'];
         $caption = $image['caption'];
-        $size = 'medium';
+        $size = 'large';
         $thumb = $image['sizes'][ $size ];
         $width = $image['sizes'][ $size . '-width' ];
         $height = $image['sizes'][ $size . '-height' ];
@@ -371,7 +374,6 @@ function my_ajax_get_cart_count() {
     $response = array(
         'what'=>'cart',
         'action'=>'get_cart_count',
-        'id'=>$status,
         'data'=>WC()->cart->get_cart_contents_count(),
     );
     $xmlResponse = new WP_Ajax_Response($response);
@@ -531,6 +533,17 @@ function my_add_see_more_cats(){
             } else {
                 echo $cat_name;
             }
-        echo '<a class="surrounding" href="'.$link.'"></a></div></div><!--.return-to-cat .button--></div><!--.return-button .wrapper-->';
+        echo '<a class="surrounding" href="'.$link.'"></a></div><!--.return-to-cat .button--></div><!--.return-button .wrapper-->';
     } 
+}
+
+add_filter("woocommerce_stock_html","my_stock_shower",20,3);
+function my_stock_shower($availability_html, $availability_availability, $variation ){
+	if(get_field("show_stock",get_the_ID())==="none"){
+        return "";
+    } elseif(get_field("show_stock",get_the_ID())==="pre-order"){
+        return '<p class="stock">Pre-Order</p>';
+    } else {
+        return $availability_html;
+    }
 }

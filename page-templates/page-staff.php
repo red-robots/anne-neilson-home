@@ -56,10 +56,13 @@ get_header(); ?>
         
 <div class="staff-box blocks ">
   <!--   <a class="" href="#">-->
-             <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>" />
+        <div class="staff-image-wrapper">
+            <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>" />
+            <a class="surrounding" href="<?php echo get_the_permalink();?>"></a>
+        </div>
      <div class="staff-content">
-     	<h3 class="staff"><?php the_title(); ?></h3>
-        <div class="staff_title"><?php echo $staffTitle; ?></div>
+     	<a href="<?php echo get_the_permalink();?>"><h3 class="staff"><?php echo get_the_title(); ?></h3></a>
+        <div class="staff_title"><?php echo '<a href="'.get_the_permalink().'">'.$staffTitle.'</a>'; ?></div>
         <?php if($phone != '') {echo '<div class="staff-item">'.$phone.'</div>';} ?>
         <?php if($phone_2 != '') {echo '<div class="staff-item">'.$phone_2.'</div>';} ?>
         <?php if($email != '') {

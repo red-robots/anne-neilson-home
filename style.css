@@ -975,6 +975,18 @@ header#masthead {
 mark.count {
     background-color: transparent;
 }
+.thankyou-hidden {
+    display: none;
+}
+#thankyou-popup {
+    background-color: white;
+    padding: 40px 10px 20px 10px;
+}
+#thankyou-popup .gform_footer.top_label:after {
+display: block;
+clear: both;
+content: "";
+}
 .popup-cart {
     position: absolute;
     top: 110%;
@@ -1332,6 +1344,17 @@ mark.count {
     font-size: 18px;
     color: #948c82;
 }
+.staff-image-wrapper {
+    position: relative;
+}
+.staff-image-wrapper a.surrounding {
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
 #page {
 	width: 100%;
 	margin: 0	
@@ -1459,6 +1482,30 @@ a.surrounding {
     top: 0;
     left: 0;
     z-index: 1;
+}
+
+.return-button.wrapper .return-to-cat.button {
+    margin:30px 0 0 0;
+    color: white;
+    background-color: rgba(150,167,166,1);
+    padding: 10px 20px;
+    display: inline-block;
+	font-family: FuturaPT-Light;
+	font-weight:600;
+    line-height: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    position: relative;
+}
+.return-button.wrapper .return-to-cat.button:hover {
+	background-color: rgba(150,167,166,.7);
+}
+.return-button.wrapper .return-to-cat.button a {
+    text-decoration: none;
+    color: white;
+}
+.return-button.wrapper .return-to-cat.button a:hover {
+    color: white;
 }
 .image-wrapper .overlay {
     text-transform: uppercase;
@@ -2952,7 +2999,7 @@ a.comment-edit-link:hover {
 }
 .staff-box:hover {
 	background-color: #fff; 
-	color: #c5724e;
+	/*color: #c5724e;*/
 }
 .staff-box img {
 	width: 100%;
@@ -3407,6 +3454,9 @@ width: auto;
 }
 /* Minimum width of 600 pixels. */
 @media screen and (min-width: 600px) {
+    #thankyou-popup {
+        padding: 40px;
+    }
 /* = Devotional popup
 -------------------------------------------------------------- */
 .devotional {
@@ -3678,7 +3728,7 @@ footer[role="contentinfo"] .button.wrapper {
 .woocommerce div.product p.stock {
     font-size: 1.3em;
 }
-.return-button.wrapper .return-to-cat.button {
+/*.return-button.wrapper .return-to-cat.button {
     margin:30px 0 0 0;
     color: white;
     background-color: rgba(150,167,166,1);
@@ -3700,7 +3750,7 @@ footer[role="contentinfo"] .button.wrapper {
 }
 .return-button.wrapper .return-to-cat.button a:hover {
     color: white;
-}
+}*/
 
 
 
@@ -3858,6 +3908,12 @@ footer[role="contentinfo"] .button.wrapper {
 	margin: 0 0% 0 0;
 	text-align: left;	
 	float: right;	
+}
+.page-id-1150 .site-content {
+    width: 70%;
+}
+.page-id-1150 .widget-area {
+    width: 17%;
 }
 	.site-content {
 		float: left;
@@ -4051,6 +4107,14 @@ div#sl_div div#map {
     }
     .woocommerce div.product div.images, .woocommerce-page div.product div.images {
         width: 40%;
+    }
+    /* Notecards Override*/
+    .woocommerce.term-luxury-candle ul.products li.product {
+        width: 28%;
+        margin-right: 8%;
+    }
+    .woocommerce.term-luxury-candle ul.products li.product.last {
+        margin-right: 0;
     }
 }
 /* Minimum width of 960 pixels. */

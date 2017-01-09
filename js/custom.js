@@ -244,7 +244,18 @@ $( '.search-icon' ).click(function() {
 	  });
   
 
-
+(function(){
+    if($('#thankyou-popup').length>0){
+        $.colorbox({
+            className: "thankyou-popup",
+            height: '80%',
+            width: '90%',
+            maxWidth: '960px',
+            inline:true,
+            href:"#thankyou-popup",
+        });
+    }
+})();
 
 
 
