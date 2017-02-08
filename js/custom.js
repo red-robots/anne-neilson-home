@@ -178,15 +178,18 @@ jQuery(document).ready(function ($) {
     })();
 
 if($("#homepage-flag").length > 0) {	
- if (document.cookie.indexOf('visited=true') == -1) {
+ if (document.cookie.indexOf('visited=true') !== -1) {
         var fifteenDays = 1000*60*60*24*15;
         var expires = new Date((new Date()).valueOf() + fifteenDays);
         document.cookie = "visited=true;expires=" + expires.toUTCString();
 
+        
+          var width = window.innerWidth*0.5 > 960 ? "960px" : "50%";
+          width = window.innerWidth < 600 ? "95%": width;
         var cboxOptions = {
-          width: '50%',
+          width: width,
           // height: '95%',
-          maxWidth: '960px',
+          //maxWidth: '960px',
           // maxHeight: '960px',
           inline:true, 
           href:"#mc_embed_signup",
@@ -197,9 +200,11 @@ if($("#homepage-flag").length > 0) {
         $.colorbox(cboxOptions);
 
         $(window).resize(function(){
+          var width = window.innerWidth*0.5 > 960 ? "960px" : "50%";
+          width = window.innerWidth < 600 ? "95%": width;
           $.colorbox.resize({
-            width: window.innerWidth > parseInt(cboxOptions.maxWidth) ? cboxOptions.maxWidth : cboxOptions.width,
-            height: window.innerHeight > parseInt(cboxOptions.maxHeight) ? cboxOptions.maxHeight : cboxOptions.height
+            width: width,
+ //           height: window.innerHeight > parseInt(cboxOptions.maxHeight) ? cboxOptions.maxHeight : cboxOptions.height
           });
       });
 

@@ -547,3 +547,8 @@ function my_stock_shower($availability_html, $availability_availability, $variat
         return $availability_html;
     }
 }
+
+add_filter('bella_woocommerce_order_shipping_method','bella_custom_shipping_method',10,1);
+function bella_custom_shipping_method($title){
+    return 'PUSPS';
+}
