@@ -91,8 +91,7 @@
         </div><!-- footer middle -->
         
         <div class="footer-right">
-        	<div class="button wrapper"><a class="buttn" href="http://anneneilsonfineart.com" target="_blank">Gallery</a></div>
-            <div class="button wrapper"><a class="buttn" href="<?php the_field('wholesaler_link' , 'option'); ?>">Request Wholesale Information</a></div>
+            <div class="button wrapper"><a class="buttn" href="<?php the_field('wholesaler_link' , 'option'); ?>">Wholesale Login</a></div>
             <div class="button wrapper"><a class="buttn" href="<?php bloginfo('url'); ?>/store-location">Store Locators</a></div>
             <div class="clear"></div>
         </div><!-- footer right -->
