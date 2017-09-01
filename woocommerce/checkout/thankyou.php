@@ -57,11 +57,6 @@ if ( $order ) : ?>
 			</li>
 			<?php endif; ?>
 		</ul>
-        <div class="thankyou-hidden">
-            <div id="thankyou-popup">
-                <?php echo do_shortcode('[gravityform id="5" description="false"]');?>
-            </div><!--#thankyou-popup-->
-        </div><!--.hidden-->
 		<div class="clear"></div>
 
 	<?php endif; ?>
