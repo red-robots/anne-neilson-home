@@ -3339,7 +3339,9 @@ input.qty {max-width: 30px;}
 	border-color: rgba(143,146,163,1);
 	border-radius: 0;
 	padding: 12px;
-    font-size: 18px;
+	font-size: 18px;
+	width: 3.6em !important;
+	max-width: 100%;
 }
 .thumbnails {
 	width: 250px;	
