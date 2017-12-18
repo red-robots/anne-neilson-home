@@ -552,3 +552,8 @@ add_filter('bella_woocommerce_order_shipping_method','bella_custom_shipping_meth
 function bella_custom_shipping_method($title){
     return 'PUSPS';
 }
+
+add_action('woocommerce_after_order_notes','bella_custom_expedited_shipping',10,0);
+function bella_custom_expedited_shipping(){
+    echo '<p>For Expedited Shipping, please contact us at <a href="mailto:orders@anneneilsonhome.com">orders@anneneilsonhome.com</a></p>';
+}
