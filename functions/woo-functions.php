@@ -557,3 +557,4 @@ add_action('woocommerce_after_order_notes','bella_custom_expedited_shipping',10,
 function bella_custom_expedited_shipping(){
     echo '<p>For Expedited Shipping, please contact us at <a href="mailto:orders@anneneilsonhome.com">orders@anneneilsonhome.com</a></p>';
 }
+add_theme_support( 'woocommerce' );
