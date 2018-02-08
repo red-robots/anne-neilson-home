@@ -721,6 +721,7 @@ input[type="color"] {
 
 /* Buttons */
 .menu-toggle,
+button,
 input[type="submit"],
 input[type="button"],
 input[type="reset"],
@@ -4104,11 +4105,13 @@ div#sl_div div#map {
     .popup-view  .summary.entry-summary{
         padding: 0 60px 0 0;
     }
-    .woocommerce .popup-view div.product div.summary, .woocommerce-page .popup-view div.product div.summary {
+    .popup-view div.product div.summary {
         width: 56%;
+		float: right;
     }
-    .woocommerce div.product div.images, .woocommerce-page div.product div.images {
+    .popup-view div.product div.images, .popup-view div.product div.images {
         width: 40%;
+		float: left;
     }
     /* Notecards Override*/
     .woocommerce.term-luxury-candle ul.products li.product {
