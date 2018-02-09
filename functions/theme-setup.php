@@ -93,7 +93,7 @@ function twentytwelve_scripts_styles() {
 		wp_enqueue_style( 'twentytwelve-fonts', esc_url_raw( $font_url ), array(), null );
 
 	// Loads our main stylesheet.
-	wp_enqueue_style( 'twentytwelve-style', get_stylesheet_uri(), array(), '0123' );
+	wp_enqueue_style( 'twentytwelve-style', get_stylesheet_uri(), array(), '321' );
 	wp_enqueue_style( 'flexslider', get_template_directory_uri() . '/style-flexslider.css', array( 'twentytwelve-style' ), '20121010' );
 	wp_enqueue_style( 'productslider', get_template_directory_uri() . '/style-product-slider.css', array( 'twentytwelve-style' ), '20121010' );
 	wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/css/colorbox.css', array( 'twentytwelve-style' ), '20121010' );

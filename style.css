@@ -3273,7 +3273,8 @@ span.sku_wrapper {display: none;}
 	float: right;
 }
 input.qty {max-width: 30px;}
-.woocommerce ul.products li.product h3, .woocommerce-page ul.products li.product h3 {
+.woocommerce ul.products li.product h3, .woocommerce-page ul.products li.product h3,
+.woocommerce ul.products li.product h2, .woocommerce-page ul.products li.product h2 {
 	color: rgba(150,167,166,1);
 	text-transform:uppercase;
 	font-weight:300;

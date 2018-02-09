@@ -52,7 +52,7 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('woocommerce'); ?>>
+<body <?php body_class(); ?>>
 
 <script>
   window.fbAsyncInit = function() {
